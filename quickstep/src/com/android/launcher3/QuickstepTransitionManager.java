@@ -184,7 +184,7 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
             SystemProperties.getBoolean("persist.debug.shell_starting_surface", true);
 
     /** Duration of status bar animations. */
-    public static final int STATUS_BAR_TRANSITION_DURATION = 120;
+    public static final int STATUS_BAR_TRANSITION_DURATION = 110;
 
     /**
      * Since our animations decelerate heavily when finishing, we want to start status bar
@@ -194,8 +194,8 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
 
     public static final long APP_LAUNCH_DURATION;
 
-    private static final long APP_LAUNCH_ALPHA_DURATION = 50;
-    private static final long APP_LAUNCH_ALPHA_START_DELAY = 25;
+    private static final long APP_LAUNCH_ALPHA_DURATION = 100;
+    private static final long APP_LAUNCH_ALPHA_START_DELAY = 20;
 
     public static final int ANIMATION_NAV_FADE_IN_DURATION;
     public static final int ANIMATION_NAV_FADE_OUT_DURATION;
@@ -215,8 +215,8 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
     public static final int TASKBAR_TO_APP_DURATION = 600;
     // TODO(b/236145847): Tune TASKBAR_TO_HOME_DURATION to 383 after conflict with unlock animation
     // is solved.
-    private static final int TASKBAR_TO_HOME_DURATION_FAST = 300;
-    private static final int TASKBAR_TO_HOME_DURATION_SLOW = 1000;
+    private static final int TASKBAR_TO_HOME_DURATION_FAST = 250;
+    private static final int TASKBAR_TO_HOME_DURATION_SLOW = 900;
     protected static final int CONTENT_SCALE_DURATION;
     protected static final int CONTENT_SCRIM_DURATION;
 
@@ -281,17 +281,17 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
 
     static {
         APP_LAUNCH_DURATION = getDuration(500);
-        ANIMATION_NAV_FADE_IN_DURATION = getDuration(266);
-        ANIMATION_NAV_FADE_OUT_DURATION = getDuration(133);
+        ANIMATION_NAV_FADE_IN_DURATION = getDuration(244);
+        ANIMATION_NAV_FADE_OUT_DURATION = getDuration(110);
         ANIMATION_DELAY_NAV_FADE_IN = APP_LAUNCH_DURATION - ANIMATION_NAV_FADE_IN_DURATION;
-        RECENTS_LAUNCH_DURATION = getDuration(336);
+        RECENTS_LAUNCH_DURATION = getDuration(300);
         LAUNCHER_RESUME_START_DELAY = getDuration(100);
-        CLOSING_TRANSITION_DURATION_MS = getDuration(250);
-        SPLIT_LAUNCH_DURATION = getDuration(370);
+        CLOSING_TRANSITION_DURATION_MS = getDuration(220);
+        SPLIT_LAUNCH_DURATION = getDuration(340);
         SPLIT_DIVIDER_ANIM_DURATION = getDuration(100);
         CONTENT_ALPHA_DURATION = getDuration(217);
-        CONTENT_SCALE_DURATION = getDuration(350);
-        CONTENT_SCRIM_DURATION = getDuration(350);
+        CONTENT_SCALE_DURATION = getDuration(300);
+        CONTENT_SCRIM_DURATION = getDuration(310);
     }
 
     public QuickstepTransitionManager(Context context) {
@@ -925,7 +925,7 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
     }
 
     public static int getDuration(int duration) {
-        Float sAnimScale = 95.0f;
+        Float sAnimScale = 92.0f;
         float animScale2 = Math.max(0.0f, Math.min(1.0f, sAnimScale / 100.0f));
         sAnimScale = Float.valueOf(animScale2);
         return (int) (duration * sAnimScale);
